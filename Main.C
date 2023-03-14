@@ -1,6 +1,6 @@
-#include <stdio.h> // input-output library
-#include <stdlib.h> // standard library
-#include "BST.C"
+#include <stdio.h>
+#include <stdlib.h>
+#include "BST.h"
 #include <time.h>
 
 int main() {
