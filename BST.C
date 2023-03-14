@@ -4,52 +4,68 @@
 #include <math.h>
 
 // Node struct
-struct Node {
+struct Node
+{
     int data;
-    struct Node* left;
-    struct Node* right;
+    struct Node *left;
+    struct Node *right;
 };
 
 // create Node
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    newNode->data = data;
-    newNode->left = NULL;
-    newNode->right = NULL;
-    return newNode;
+void createNode(struct Node **newNode, int data)
+{
+    *newNode = (struct Node *)malloc(sizeof(struct Node));
+    (*newNode)->data = data;
+    (*newNode)->left = NULL;
+    (*newNode)->right = NULL;
 }
-
 
 // insert function
-struct Node* insert(struct Node* root, int data) {
-    if (root == NULL) {
-        return createNode(data);
+void insert(struct Node **root, int data)
+{
+    if (*root == NULL)
+    {
+        *root = createNode(data);
     }
-    if (data < root->data) {
-        root->left = insert(root->left, data);
-    } else if (data > root->data) {
-        root->right = insert(root->right, data);
+    else if (data < (*root)->data)
+    {
+        insert(&(*root)->left, data);
     }
-    return root;
+    else if (data > (*root)->data)
+    {
+        insert(&(*root)->right, data);
+    }
 }
-
 
 // find function
-struct Node* find(struct Node* root, int data) {
-    if (root == NULL || root->data == data) {
-        return root;
+void find(struct Node *root, int data, struct Node **found)
+{
+    if (root == NULL)
+    {
+        *found = NULL;
     }
-    if (data < root->data) {
-        return find(root->left, data);
-    } else {
-        return find(root->right, data);
+    else if (root->data == data)
+    {
+        *found = root;
+    }
+    else if (data < root->data)
+    {
+        find(root->left, data, found);
+    }
+    else
+    {
+        find(root->right, data, found);
     }
 }
+
 // print tree
-void printTree(struct Node* root, int depth) {
-    if (root != NULL) {
+void printTree(struct Node *root, int depth)
+{
+    if (root != NULL)
+    {
         printTree(root->right, depth + 1);
-        for (int i = 0; i < depth; i++) {
+        for (int i = 0; i < depth; i++)
+        {
             printf("  ");
         }
         printf("%d\n", root->data);
