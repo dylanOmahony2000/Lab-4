@@ -8,7 +8,7 @@ int main() {
     // create the binary search tree
     struct Node* root = NULL;
 
-    // seed the random number generator
+    // create seed for random number
     srand(time(NULL));
 
     // insert 10 random numbers between 1 and 20 into the tree
@@ -28,6 +28,7 @@ int main() {
     }
 
     // print the structure of the tree
+    printf("The root is the left most node:\n");
     printf("Tree structure:\n");
     printTree(root, 0);
 

@@ -12,7 +12,7 @@ struct Node
 };
 
 // create Node
-void createNode(struct Node **newNode, int data)
+void createNode(struct Node *newNode, int data)
 {
     *newNode = (struct Node *)malloc(sizeof(struct Node));
     (*newNode)->data = data;
@@ -20,12 +20,11 @@ void createNode(struct Node **newNode, int data)
     (*newNode)->right = NULL;
 }
 
-// insert function
-void insert(struct Node **root, int data)
+void insert(struct Node *root, int data)
 {
     if (*root == NULL)
     {
-        *root = createNode(data);
+        createNode(root, data);
     }
     else if (data < (*root)->data)
     {
