@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <cstdlib>
+#include <math.h>
 
 // Node struct
 struct Node {
@@ -45,19 +46,13 @@ struct Node* find(struct Node* root, int data) {
     }
 }
 // print tree
-void printTree(struct Node* root) {
+void printTree(struct Node* root, int depth) {
     if (root != NULL) {
-        printTree(root->left);
-        printf("%d ", root->data);
-        printTree(root->right);
+        printTree(root->right, depth + 1);
+        for (int i = 0; i < depth; i++) {
+            printf("  ");
+        }
+        printf("%d\n", root->data);
+        printTree(root->left, depth + 1);
     }
-}
-
-// create binary search tree
-struct Node* createBST(int* arr, int n) {
-    struct Node* root = NULL;
-    for (int i = 0; i < n; i++) {
-        root = insert(root, arr[i]);
-    }
-    return root;
 }
