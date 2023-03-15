@@ -35,10 +35,10 @@ void find(struct Node* root, int item, struct Node** found) {
 void printTree(struct Node* root, int depth) {
     if (root != NULL) {
         printTree(root->right, depth + 1);
-        for (int i = 0; i < depth; i++) {
-            printf("  ");
-        }
-        printf("%d\n", root->data);
+        printf("%*s%d\n", depth * 4, "", root->data);
         printTree(root->left, depth + 1);
     }
 }
+
+
+

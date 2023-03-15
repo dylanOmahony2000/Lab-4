@@ -12,9 +12,15 @@ int main() {
     srand(time(NULL));
 
     // insert 10 random numbers between 1 and 20 into the tree
-    for (int i = 0; i < 10; i++) {
+    int i = 0;
+    while (i < 10) {
         int num = rand() % 20 + 1;
-        insert(&root, num);
+        struct Node* found = NULL;
+        find(root, num, &found);
+        if (found == NULL) { // number is not in the tree yet
+            insert(&root, num);
+            i++; // increment i counter, if we insert a unique number
+        }
     }
 
     // search for an item in the tree
@@ -28,7 +34,8 @@ int main() {
     }
 
     // print the structure of the tree
-    printf("The root is the left most node:\n");
+    printf("Tree is printed left to right,\n");
+    printf("the left most item is the root node\n");
     printf("Tree structure:\n");
     printTree(root, 0);
 
