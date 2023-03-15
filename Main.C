@@ -28,15 +28,15 @@ int main() {
     struct Node* found = NULL;
     find(root, item, &found);
     if (found != NULL) {
-        printf("Found item %d in the tree!\n", item);
+        printf("Found item '%d' in the Binary-tree!\n", item);
     } else {
-        printf("Item %d not found in the tree.\n", item);
+        printf("Item '%d' not found in the Binary-tree.\n", item);
     }
 
     // print the structure of the tree
     printf("Tree is printed left to right,\n");
-    printf("the left most item is the root node\n");
-    printf("Tree structure:\n");
+    printf("the left most item is the root node.\n");
+    printf("Binary Tree structure:\n");
     printTree(root, 0);
 
     return 0;
